@@ -41,4 +41,9 @@ Remove the 99-pve-no-nag APT hook so the patch does not automatically reapply du
 
 Restart the pveproxy web interface service.
 
-Note: If the .bak backup file was accidentally deleted, you can manually force the system to restore the original, unmodified Proxmox file by reinstalling the toolkit directly via the package manager: apt install --reinstall proxmox-widget-toolkit. Just remember to clear your browser cache afterward!
+Note: If the .bak backup file was accidentally deleted, you can manually force the system to restore the original, unmodified Proxmox file by reinstalling the toolkit directly via the package manager: 
+
+```bash
+apt install --reinstall proxmox-widget-toolkit
+
+Just remember to clear your browser cache afterward!
