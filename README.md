@@ -8,13 +8,14 @@ By default, Proxmox VE displays a subscription warning dialogue every time you l
 ## Files Included
 * `remove-sub-warning.sh`: A one-off executable bash script that backups the original file, applies the patch, and restarts the web interface.
 * `99-pve-no-nag`: An APT hook configuration file that automatically reapplies the patch anytime Proxmox updates the widget toolkit.
+* `uninstall.sh`: A one-off script to unistall and restore original configuration.
 
 ## Usage
 
 ### Manual Patching (One-Time)
 To manually remove the warning, run the bash script on your Proxmox host:
 
-```bash
+bash
 chmod +x remove-sub-warning.sh
 ./remove-sub-warning.sh
 
@@ -23,13 +24,13 @@ Since Proxmox updates will periodically overwrite the patched JavaScript file, y
 
 Copy the hook file to your APT configuration directory:
 
-```bash
+bash
 cp 99-pve-no-nag /etc/apt/apt.conf.d/99-pve-no-nag
 
 ### Uninstallation (Restore Default Behavior)
 If you ever want to revert these changes and restore the original Proxmox subscription warning, you can run the included `uninstall.sh` script:
 
-```bash
+bash
 chmod +x uninstall.sh
 ./uninstall.sh
 
@@ -43,7 +44,7 @@ Restart the pveproxy web interface service.
 
 Note: If the .bak backup file was accidentally deleted, you can manually force the system to restore the original, unmodified Proxmox file by reinstalling the toolkit directly via the package manager: 
 
-```bash
+bash
 apt install --reinstall proxmox-widget-toolkit
 
 Just remember to clear your browser cache afterward!
