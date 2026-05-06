@@ -11,9 +11,24 @@ By default, Proxmox VE displays a subscription warning dialogue every time you l
 
 ## Usage
 
-### 1. Manual Patching (One-Time)
+### Manual Patching (One-Time)
 To manually remove the warning, run the bash script on your Proxmox host:
 
 ```bash
 chmod +x remove-sub-warning.sh
 ./remove-sub-warning.sh
+
+### Automated Patching (APT Hook)
+Since Proxmox updates will periodically overwrite the patched JavaScript file, you can install the APT hook to ensure the warning stays hidden permanently.
+
+Copy the hook file to your APT configuration directory:
+
+```bash
+cp 99-pve-no-nag /etc/apt/apt.conf.d/99-pve-no-nag
+
+### Uninstallation (Restore Default Behavior)
+If you ever want to revert these changes and restore the original Proxmox subscription warning, you can run the included `uninstall.sh` script:
+
+```bash
+chmod +x uninstall.sh
+./uninstall.sh
