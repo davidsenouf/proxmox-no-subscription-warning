@@ -32,3 +32,13 @@ If you ever want to revert these changes and restore the original Proxmox subscr
 ```bash
 chmod +x uninstall.sh
 ./uninstall.sh
+
+This script will automatically:
+
+Restore the backup of the original proxmoxlib.js file.
+
+Remove the 99-pve-no-nag APT hook so the patch does not automatically reapply during the next update.
+
+Restart the pveproxy web interface service.
+
+Note: If the .bak backup file was accidentally deleted, you can manually force the system to restore the original, unmodified Proxmox file by reinstalling the toolkit directly via the package manager: apt install --reinstall proxmox-widget-toolkit. Just remember to clear your browser cache afterward!
